@@ -56,8 +56,5 @@ def update(id):
         db.session.commit()
     return redirect('/data')
 
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
