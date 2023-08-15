@@ -64,7 +64,7 @@ def delete(id):
             db.session.delete(employee)
             db.session.commit()
             return redirect('/data')
-        abort(404)
+        return f"Employee with id = {id} doesn't exist"
 
     return render_template('delete.html')
 
