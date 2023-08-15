@@ -56,5 +56,17 @@ def update(id):
         db.session.commit()
     return redirect('/data')
 
+@app.route('/data/<int:id>/delete', methods=['GET','POST'])
+def delete(id):
+    employee = EmployeeModel.query.get(id)
+    if request.method == 'POST':
+        if employee:
+            db.session.delete(employee)
+            db.session.commit()
+            return redirect('/data')
+        abort(404)
+
+    return render_template('delete.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
